@@ -1,21 +1,25 @@
 import Image from "next/image"
 import { fetchProductById } from "@/lib/api"
 import { notFound } from "next/navigation"
+import { Product } from "@/types/product"
 
 interface Props {
   params: Promise<{ id: string }>
 }
 
 export default async function ProductDetails({ params }: Props) {
-  // ✅ Await params (required in Next.js 15+)
   const { id } = await params
 
-  let product
+  let product: Product | null = null
 
   try {
     product = await fetchProductById(id)
   } catch {
-    // Show 404 page if product not found
+    notFound()
+  }
+
+  // ✅ TypeScript satisfied
+  if (!product) {
     notFound()
   }
 

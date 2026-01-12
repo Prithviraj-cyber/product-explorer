@@ -2,20 +2,18 @@
 
 import { useEffect, useState } from "react"
 
-// Dark mode toggle with persistence
 export default function DarkModeToggle() {
-  const [dark, setDark] = useState(false)
+  const [dark, setDark] = useState<boolean>(false)
 
-  // Load theme on first render
   useEffect(() => {
     const saved = localStorage.getItem("theme")
     if (saved === "dark") {
       document.documentElement.classList.add("dark")
       setDark(true)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // Toggle theme
   const toggleTheme = () => {
     if (dark) {
       document.documentElement.classList.remove("dark")
@@ -28,11 +26,7 @@ export default function DarkModeToggle() {
   }
 
   return (
-    <button
-      onClick={toggleTheme}
-      aria-label="Toggle dark mode"
-      className="btn"
-    >
+    <button onClick={toggleTheme} className="btn">
       {dark ? "☀️ Light" : "🌙 Dark"}
     </button>
   )

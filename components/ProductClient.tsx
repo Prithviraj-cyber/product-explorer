@@ -37,8 +37,13 @@ export default function ProductClient({ products }: Props) {
 
   // Load favorites from localStorage on mount
   useEffect(() => {
-    setFavorites(getFavorites())
+    setFavorites(prev => {
+      const next = getFavorites()
+      return JSON.stringify(prev) === JSON.stringify(next) ? prev : next
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
 
   // Search filter
   let filtered = products.filter(p =>

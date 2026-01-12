@@ -2,41 +2,41 @@ import { Product } from "@/types/product"
 
 const BASE_URL = "https://fakestoreapi.com"
 
-// Fetch ALL products (used on listing page)
+// Fetch ALL products (safe for unstable public APIs)
 export async function fetchProducts(): Promise<Product[]> {
-  const res = await fetch(`${BASE_URL}/products`, {
-    cache: "no-store",
-  })
+  try {
+    const res = await fetch(`${BASE_URL}/products`, {
+      cache: "no-store",
+    })
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch products")
+    if (!res.ok) {
+      console.error("Failed to fetch products:", res.status)
+      return []
+    }
+
+    return await res.json()
+  } catch (error) {
+    console.error("Fetch products error:", error)
+    return []
   }
-
-  const text = await res.text()
-
-  if (!text) {
-    throw new Error("Empty response from API")
-  }
-
-  return JSON.parse(text)
-
 }
 
-// Fetch SINGLE product by ID (used on details page)
-export async function fetchProductById(id: string): Promise<Product> {
-  const res = await fetch(`${BASE_URL}/products/${id}`, {
-    cache: "no-store",
-  })
+// Fetch SINGLE product by ID (details page)
+export async function fetchProductById(
+  id: string
+): Promise<Product | null> {
+  try {
+    const res = await fetch(`${BASE_URL}/products/${id}`, {
+      cache: "no-store",
+    })
 
-  if (!res.ok) {
-    throw new Error("Product not found")
+    if (!res.ok) {
+      return null
+    }
+
+    return await res.json()
+  } catch (error) {
+    console.error("Fetch product error:", error)
+    return null
   }
-
-  const text = await res.text()
-
-  if (!text) {
-    throw new Error("Empty response from API")
-  }
-
-  return JSON.parse(text)
 }
