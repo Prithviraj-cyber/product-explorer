@@ -3,6 +3,7 @@ import { fetchProductById } from "@/lib/api"
 import { notFound } from "next/navigation"
 import { Product } from "@/types/product"
 
+// 🔴 VERY IMPORTANT FOR VERCEL
 export const dynamic = "force-dynamic"
 
 interface Props {
@@ -20,7 +21,6 @@ export default async function ProductDetails({ params }: Props) {
     notFound()
   }
 
-  // ✅ TypeScript satisfied
   if (!product) {
     notFound()
   }
