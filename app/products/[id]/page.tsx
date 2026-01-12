@@ -5,7 +5,6 @@ import { Product } from "@/types/product"
 
 // VERY IMPORTANT FOR VERCEL
 export const dynamic = "force-dynamic"
-export const runtime = "nodejs"
 
 interface Props {
   params: Promise<{ id: string }>

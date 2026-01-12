@@ -2,10 +2,6 @@ import { fetchProducts } from "@/lib/api"
 import ProductClient from "@/components/ProductClient"
 import { Product } from "@/types/product"
 
-// ✅ ONLY THIS IS REQUIRED
-export const dynamic = "force-dynamic"
-export const runtime = "nodejs"
-
 export default async function HomePage() {
   let products: Product[] = []
 

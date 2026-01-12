@@ -3,6 +3,8 @@ import "../styles/custom.css"
 import Link from "next/link"
 import DarkModeToggle from "@/components/DarkModeToggle"
 
+export const dynamic = "force-dynamic"
+
 export default function RootLayout({
   children,
 }: {
