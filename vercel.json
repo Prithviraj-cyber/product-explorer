@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "app/**": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}
