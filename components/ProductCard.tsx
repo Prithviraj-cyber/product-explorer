@@ -21,6 +21,7 @@ export default function ProductCard({ product }: Props) {
           alt={product.title}
           width={200}
           height={200}
+          unoptimized
           loading="lazy"
           className="h-40 w-full object-contain"
         />

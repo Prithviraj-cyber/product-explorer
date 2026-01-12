@@ -31,6 +31,7 @@ export default async function ProductDetails({ params }: Props) {
           alt={product.title}
           width={400}
           height={400}
+          unoptimized
           className="object-contain"
         />
 
