@@ -3,8 +3,9 @@ import { fetchProductById } from "@/lib/api"
 import { notFound } from "next/navigation"
 import { Product } from "@/types/product"
 
-// 🔴 VERY IMPORTANT FOR VERCEL
+// VERY IMPORTANT FOR VERCEL
 export const dynamic = "force-dynamic"
+export const runtime = "nodejs"
 
 interface Props {
   params: Promise<{ id: string }>
