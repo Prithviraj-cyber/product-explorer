@@ -1,12 +1,17 @@
 import { fetchProducts } from "@/lib/api"
 import ProductClient from "@/components/ProductClient"
+import { Product } from "@/types/product"
 
-// Server Component
-// Only responsible for data fetching
+export const dynamic = "force-dynamic" // ✅ IMPORTANT
+
 export default async function HomePage() {
-  const products = await fetchProducts()
+  let products: Product[] = []
 
-  return (
-    <ProductClient products={products} />
-  )
+  try {
+    products = await fetchProducts()
+  } catch (error) {
+    console.error("Fetch products error:", error)
+  }
+
+  return <ProductClient products={products} />
 }
