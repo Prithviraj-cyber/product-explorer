@@ -1,0 +1,100 @@
+/* =========================
+   GLOBAL THEME VARIABLES
+   ========================= */
+
+/* Light mode colors */
+:root {
+  --bg: #f9fafb;
+  --card-bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --primary: #2563eb;
+}
+
+/* Dark mode colors */
+.dark {
+  --bg: #0f172a;
+  --card-bg: #020617;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --border: #1e293b;
+  --primary: #3b82f6;
+}
+
+/* =========================
+   BASE STYLES
+   ========================= */
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* =========================
+   PRODUCT CARD
+   ========================= */
+
+.product-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.dark .product-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================
+   TEXT
+   ========================= */
+
+.text-muted {
+  color: var(--muted);
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+.btn {
+  border: 1px solid var(--border);
+  background-color: var(--card-bg);
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* =========================
+   INPUTS / SELECT
+   ========================= */
+
+input,
+select {
+  background-color: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+/* =========================
+   ACCESSIBILITY
+   ========================= */
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
