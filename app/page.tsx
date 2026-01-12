@@ -2,9 +2,8 @@ import { fetchProducts } from "@/lib/api"
 import ProductClient from "@/components/ProductClient"
 import { Product } from "@/types/product"
 
-// REQUIRED for Vercel
+// ✅ ONLY THIS IS REQUIRED
 export const dynamic = "force-dynamic"
-export const fetchCache = "force-no-store"
 
 export default async function HomePage() {
   let products: Product[] = []
