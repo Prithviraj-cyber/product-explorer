@@ -12,13 +12,8 @@ export async function fetchProducts(): Promise<Product[]> {
     throw new Error("Failed to fetch products")
   }
 
-  const text = await res.text()
-
-  if (!text) {
-    throw new Error("Empty response from API")
-  }
-
-  return JSON.parse(text)
+   // ✅ Direct JSON parsing (safe for Vercel)
+  return res.json()
 }
 
 // Fetch SINGLE product by ID (used on details page)
@@ -31,11 +26,6 @@ export async function fetchProductById(id: string): Promise<Product> {
     throw new Error("Product not found")
   }
 
-  const text = await res.text()
-
-  if (!text) {
-    throw new Error("Empty response from API")
-  }
-
-  return JSON.parse(text)
+   // ✅ Direct JSON parsing (safe for Vercel)
+  return res.json()
 }
