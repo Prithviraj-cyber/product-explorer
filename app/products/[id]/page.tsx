@@ -3,6 +3,8 @@ import { fetchProductById } from "@/lib/api"
 import { notFound } from "next/navigation"
 import { Product } from "@/types/product"
 
+export const dynamic = "force-dynamic"
+
 interface Props {
   params: Promise<{ id: string }>
 }
