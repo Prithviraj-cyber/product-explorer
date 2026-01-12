@@ -6,7 +6,7 @@ const BASE_URL = "https://fakestoreapi.com"
 export async function fetchProducts(): Promise<Product[]> {
   try {
     const res = await fetch(`${BASE_URL}/products`, {
-      cache: "no-store",
+      next: { revalidate: 0 },
     })
 
     if (!res.ok) return []
@@ -24,7 +24,7 @@ export async function fetchProductById(
 ): Promise<Product | null> {
   try {
     const res = await fetch(`${BASE_URL}/products/${id}`, {
-      cache: "no-store",
+      next: { revalidate: 0 },
     })
 
     if (!res.ok) return null
